@@ -1,0 +1,5 @@
+query getEthBalance($hash: String!, $chain: Chain) {
+    getEthBalance(owner: $hash, chain: $chain) {
+        balance
+    }
+}

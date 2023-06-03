@@ -1,0 +1,5 @@
+mutation changeNetwork($name: String) {
+    changeNetwork(name: $name) @client {
+        name
+    }
+}

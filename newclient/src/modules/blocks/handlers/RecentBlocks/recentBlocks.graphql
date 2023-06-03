@@ -1,0 +1,23 @@
+query getBlocksArrayByNumber($fromBlock: Int, $limit: Int, $chain: Chain) {
+    getBlocksArrayByNumber(fromBlock: $fromBlock, limit: $limit, chain: $chain) {
+        number
+        miner
+        txCount
+        timestamp
+        rewards {
+            total
+        }
+        txFail
+    }
+}
+subscription newBlockTable {
+    newBlockFeed {
+        number
+        miner
+        txCount
+        timestamp
+        rewards {
+            total
+        }
+    }
+}

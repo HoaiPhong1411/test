@@ -1,0 +1,8 @@
+query getLatestBlockInfo($chain: Chain) {
+    getLatestBlockInfo(chain: $chain) {
+        number
+        avgBlockTime
+        hashRate
+        difficulty
+    }
+}

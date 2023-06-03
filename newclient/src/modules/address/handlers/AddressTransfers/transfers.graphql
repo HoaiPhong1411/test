@@ -1,0 +1,87 @@
+fragment TransferSummary on Transfer {
+    transactionHash
+    timestamp
+    from
+    to
+    txFee
+}
+fragment TokenFragment on EthTokenInfo {
+    name
+    symbol
+    decimals
+}
+
+fragment BalanceFragment on BalanceDiff {
+    before
+    after
+}
+
+query getAddressEthTransfers($hash: String, $filter: TransferDirection, $_limit: Int, $_nextKey: String, $chain: Chain) {
+    getEthTransfersV2(owner: $hash, direction: $filter, limit: $_limit, nextKey: $_nextKey, chain: $chain) {
+        transfers {
+            transfer {
+                ...TransferSummary
+                block
+                status
+            }
+            stateDiff {
+                to {
+                    ...BalanceFragment
+                }
+                from {
+                    ...BalanceFragment
+                }
+            }
+            value
+        }
+        nextKey
+    }
+}
+
+query getAddressERC20Transfers($hash: String!, $_limit: Int, $_nextKey: String, $chain: Chain) {
+    getERC20Transfers(owner: $hash, limit: $_limit, nextKey: $_nextKey, chain: $chain) {
+        transfers {
+            transfer {
+                ...TransferSummary
+            }
+            stateDiff {
+                to {
+                    ...BalanceFragment
+                }
+                from {
+                    ...BalanceFragment
+                }
+            }
+            value
+            contract
+            tokenInfo {
+                ...TokenFragment
+            }
+        }
+        nextKey
+    }
+}
+
+query getAddressERC721Transfers($hash: String!, $_limit: Int, $_nextKey: String, $chain: Chain) {
+    getERC721Transfers(owner: $hash, limit: $_limit, nextKey: $_nextKey, chain: $chain) {
+        transfers {
+            transfer {
+                ...TransferSummary
+            }
+            tokenId
+            contract
+            tokenInfo {
+                name
+            }
+        }
+        nextKey
+    }
+}
+
+query getTransactionStateDiff($hash: String!) {
+    getTransactionStateDiff(hash: $hash) {
+        owner
+        from
+        to
+    }
+}

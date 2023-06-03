@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>TVN: Ethereum Blockchain Explorer - Powered by Thango</title>
+
+        <link rel="icon" sizes="200x200" href="./logo-meta.png" />
+        <link rel="shortcut icon" type="image/png" href="./logo-meta.png" />
+
+        <meta name="theme-color" content="#3d55a5" />
+        <meta name="description" content="Explore real-time data on Etherium addresses, ERC20 tokens, transactions, NFTs, prices, contracts, and more" />
+        <meta property="og:title" content="TVN: Etherium Blockchain Explorer" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="EthVM.com: Etherium Blockchain Explorer" />
+
+        <!-- <meta property="og:image" content="https://www.ethvm.com/logo-blue.png" /> -->
+        <meta property="og:url" content="https://eth-explorer.thangovn.com" />
+        <meta property="og:description" content="Explore real-time data on Etherium addresses, ERC20 tokens, transactions, NFTs, prices, contracts, and more" />
+        <meta name="twitter:title" content="TVN Explorer - open-source Etherium Blockchain Explorer" />
+        <meta name="twitter:site" content="@" />
+        <meta name="twitter:creator" content="@" />
+        <meta name="twitter:image:alt" content="TVN Explorer logo image." />
+        <!-- <meta name="apple-mobile-web-app-title" content="TVN: Etherium Blockchain Explorer - Powered by Thango" /> -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="#3d55a5" />
+        <!-- <link rel="apple-touch-icon" href="logo.png" /> -->
+
+        <script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Organization",
+                "name": "TVN Explorer",
+                "legalName": "MyEtherWallet Inc",
+                "url": "https://eth-explorer.thangovn.com",
+                "contactPoint": [
+                    {
+                        "@type": "ContactPoint",
+                        "email": "support@thangovn.com",
+                        "url": "https://eth-explorer.thangovn.com",
+                        "contactType": "customer service"
+                    }
+                ],
+                "description": "Explore real-time data on Ethereum addresses, ERC20 tokens, transactions, NFTs, prices, contracts, and more.",
+                "sameAs": ["https://eth-explorer.thangovn.com/", "https://twitter.com/", "https://github.com/"]
+            }
+        </script>
+        <link href="<%= BASE_URL %>index.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <script type="text/Javascript">
+            window.addEventListener('load', function () {
+
+                if(localStorage) {
+                    const textNetwork = JSON.parse(localStorage.getItem('networkData') || 'Ethereum')
+
+                    var ogTitle = document.createElement('meta')
+                    ogTitle.setAttribute('property', 'og:title')
+                    ogTitle.content = 'TVN: ' + textNetwork + ' Blockchain Explorer'
+                    document.getElementsByTagName('head')[0].appendChild(ogTitle)
+
+                    const shortNameNetwork = textNetwork == 'Ethereum' ? 'eth' : 'trx'
+                    const description = 'Explore real-time data on' + ' ' + textNetwork + ' ' + 'addresses, ERC20 tokens, transactions, NFTs, prices, contracts, and more'
+                    document.head.querySelector('meta[name="description"]').content = description
+                    document.head.querySelector('meta[property="og:description"]').content = description
+                    // document.head.querySelector('meta[property="og:title"]').content = 'TVN: ' + textNetwork + ' Blockchain Explorer'
+                    document.head.querySelector('meta[property="og:site_name"]').content = window.location.origin + ': ' + textNetwork + ' Blockchain Explorer'
+                    document.head.querySelector('meta[property="og:url"]').content = window.location.origin
+                    document.head.querySelector('meta[name="twitter:title"]').content = 'TVN Explorer - open-source ' + textNetwork + ' Blockchain Explorer'
+                    document.head.querySelector('meta[name="apple-mobile-web-app-title"]').content = 'TVN: ' + textNetwork + ' Blockchain Explorer - Powered by Thango'
+                    document.title = 'TVN: ' + textNetwork + ' Blockchain Explorer - Powered by Thango'
+                }
+            })
+        </script>
+        <noscript>
+            <div class="img-container-public">
+                <!-- <img src="<%= BASE_URL %>logo.png" /> -->
+            </div>
+            <div class="text-container">
+                <strong>Looks like you have Javascript disabled.</strong>
+                <p class="text-public">We're sorry but TVN Explorer doesn't work properly without JavaScript. Please enable it to continue.</p>
+                <p class="text-public">Thank you! #TVNteam</p>
+            </div>
+        </noscript>
+    </body>
+</html>

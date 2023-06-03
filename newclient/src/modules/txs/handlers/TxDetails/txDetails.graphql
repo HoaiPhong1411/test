@@ -1,0 +1,27 @@
+fragment TxDetails on Tx {
+    blockNumber
+    from
+    gas
+    gasPrice
+    gasUsed
+    timestamp
+    hash
+    input
+    status
+    nonce
+    to
+    transactionIndex
+    value
+    replacedBy
+    contractAddress
+}
+
+query getTransactionByHash($hash: String!, $chain: Chain) {
+    getTransactionByHash(hash: $hash, chain: $chain) {
+        ...TxDetails
+    }
+}
+
+subscription transactionEvent($hash: String!) {
+    transactionEvent(hash: $hash)
+}

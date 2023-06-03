@@ -1,0 +1,10 @@
+type network {
+    name: String!
+}
+extend type Query {
+    network: network!
+}
+
+extend type Mutation {
+    changeNetwork(name: String): network!
+}

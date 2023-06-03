@@ -1,0 +1,12 @@
+query favAddressCache {
+    favAddresses @client {
+        address
+        name
+    }
+}
+
+query networkCache {
+    network @client {
+        name
+    }
+}

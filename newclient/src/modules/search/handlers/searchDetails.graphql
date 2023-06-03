@@ -1,0 +1,10 @@
+query getHashType($hash: String!, $chain: Chain) {
+    getHashType(hash: $hash, chain: $chain)
+}
+
+query getTokensBeginsWith($keyword: String!) {
+    getTokensBeginsWith(keyword: $keyword) {
+        contract
+        keyword
+    }
+}
