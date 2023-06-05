@@ -15,14 +15,14 @@
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="EthVM.com: Etherium Blockchain Explorer" />
 
-        <!-- <meta property="og:image" content="https://www.ethvm.com/logo-blue.png" /> -->
+        <meta property="og:image" content="https://www.ethvm.com/logo-blue.png" />
         <meta property="og:url" content="https://eth-explorer.thangovn.com" />
         <meta property="og:description" content="Explore real-time data on Etherium addresses, ERC20 tokens, transactions, NFTs, prices, contracts, and more" />
         <meta name="twitter:title" content="TVN Explorer - open-source Etherium Blockchain Explorer" />
         <meta name="twitter:site" content="@" />
         <meta name="twitter:creator" content="@" />
         <meta name="twitter:image:alt" content="TVN Explorer logo image." />
-        <!-- <meta name="apple-mobile-web-app-title" content="TVN: Etherium Blockchain Explorer - Powered by Thango" /> -->
+        <meta name="apple-mobile-web-app-title" content="TVN: Etherium Blockchain Explorer - Powered by Thango" />
         <meta name="apple-mobile-web-app-status-bar-style" content="#3d55a5" />
         <!-- <link rel="apple-touch-icon" href="logo.png" /> -->
 
@@ -50,30 +50,6 @@
 
     <body>
         <div id="app"></div>
-        <script type="text/Javascript">
-            window.addEventListener('load', function () {
-
-                if(localStorage) {
-                    const textNetwork = JSON.parse(localStorage.getItem('networkData') || 'Ethereum')
-
-                    var ogTitle = document.createElement('meta')
-                    ogTitle.setAttribute('property', 'og:title')
-                    ogTitle.content = 'TVN: ' + textNetwork + ' Blockchain Explorer'
-                    document.getElementsByTagName('head')[0].appendChild(ogTitle)
-
-                    const shortNameNetwork = textNetwork == 'Ethereum' ? 'eth' : 'trx'
-                    const description = 'Explore real-time data on' + ' ' + textNetwork + ' ' + 'addresses, ERC20 tokens, transactions, NFTs, prices, contracts, and more'
-                    document.head.querySelector('meta[name="description"]').content = description
-                    document.head.querySelector('meta[property="og:description"]').content = description
-                    // document.head.querySelector('meta[property="og:title"]').content = 'TVN: ' + textNetwork + ' Blockchain Explorer'
-                    document.head.querySelector('meta[property="og:site_name"]').content = window.location.origin + ': ' + textNetwork + ' Blockchain Explorer'
-                    document.head.querySelector('meta[property="og:url"]').content = window.location.origin
-                    document.head.querySelector('meta[name="twitter:title"]').content = 'TVN Explorer - open-source ' + textNetwork + ' Blockchain Explorer'
-                    document.head.querySelector('meta[name="apple-mobile-web-app-title"]').content = 'TVN: ' + textNetwork + ' Blockchain Explorer - Powered by Thango'
-                    document.title = 'TVN: ' + textNetwork + ' Blockchain Explorer - Powered by Thango'
-                }
-            })
-        </script>
         <noscript>
             <div class="img-container-public">
                 <!-- <img src="<%= BASE_URL %>logo.png" /> -->
